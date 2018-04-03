@@ -1,0 +1,45 @@
+﻿@model IEnumerable<aspApiweb.Models.TEmployee>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список сотрудников</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Фамилия</td>
+            <td>Имя</td>
+            <td>Отчество</td>
+            <td>Должность</td>
+        </tr>
+        @foreach (var it in Model)
+        {
+            <tr>
+                <td>@it.Surname</td>
+                <td>@it.Name</td>
+                <td>@it.Patronomic</td>
+                <td>@it.Position</td>
+            </tr>
+        }
+    </table>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <input name="Surname" type="text" size="20"value ="Фамилия"/>
+        <input name="Name" type="text" size="20" value="Имя" />
+        <input name ="Patronomic" type="text" size="20" value="Отчество" />
+        <input name ="Position" type="text" size="20" value="Должность" />
+        <p><input type="submit" value="Add employee"/></p>
+    }
+
+    @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+    {
+        <input name ="Id" type="text" value="Id"/>
+        <input type="submit" size="20" value="delete employee"/>
+    }
+</body>
+</html>
+
